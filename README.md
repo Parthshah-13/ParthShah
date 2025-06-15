@@ -1,253 +1,203 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Portfolio</title>
-
-  <!-- Fonts and Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
   <style>
-    :root {
-      --bg-dark: #0A0F22;
-      --bg-mid: #12172C;
-      --card-dark: #1D2233cc;
-      --primary: #56B2BB;
-      --light: #F0F4F8;
-      --text: #BAC7CC;
-    }
-
+    /* Reset and base styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(135deg, #0A0F22, #12172C, #0A0F22);
-      background-size: 400% 400%;
-      animation: shine 15s ease infinite;
-      color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #0A0F22, #1D2233);
+      color: #F0F4F8;
+      line-height: 1.6;
     }
 
-    @keyframes shine {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    a {
+      color: #56B2BB;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
-    h1, h2 {
-      font-family: 'Outfit', sans-serif;
-      color: var(--primary);
+    a:hover {
+      color: #BAC7CC;
     }
 
-    nav {
+    /* Header */
+    header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(13, 18, 36, 0.9);
-      backdrop-filter: blur(8px);
+      background: #0A0F22;
+      padding: 1rem 2rem;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
-      padding: 15px 10%;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      color: #56B2BB;
+      font-size: 1.8rem;
     }
 
     nav a {
-      color: var(--primary);
-      margin-left: 20px;
-      text-decoration: none;
+      margin-left: 1.5rem;
       font-weight: bold;
+      font-size: 1rem;
     }
 
+    /* Sections */
     section {
-      padding: 120px 10% 60px;
-      transition: all 1s ease;
+      padding: 100px 10% 60px;
+      transition: all 0.4s ease-in-out;
     }
 
-    .card {
-      background: var(--card-dark);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      margin-bottom: 60px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
+    section:nth-child(even) {
+      background-color: #1D2233;
     }
 
-    .visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
+    section:nth-child(odd) {
+      background-color: #0A0F22;
     }
 
-    .section-title {
+    section h2 {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
+      color: #56B2BB;
+      border-bottom: 2px solid #56B2BB;
+      padding-bottom: 0.5rem;
     }
 
-    .list-numbered {
-      list-style: decimal;
-      padding-left: 1.5rem;
-      font-weight: 500;
-      color: var(--light);
-      font-family: 'Open Sans', sans-serif;
+    ul {
+      margin-left: 1.2rem;
     }
 
-    .skills img {
-      height: 40px;
-      margin: 8px 15px;
+    ul li {
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
     }
 
-    .contact-icons a {
-      color: var(--primary);
-      margin: 0 15px;
-      font-size: 24px;
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 10%;
-      font-size: 14px;
-      color: var(--text);
-      border-top: 1px solid #2d3145;
+    .section-number {
+      font-weight: bold;
+      color: #BAC7CC;
+      margin-right: 10px;
     }
 
-    .profile-pic {
-      width: 120px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      border: 2px solid var(--primary);
+    /* Intro spacing below navbar */
+    .spacer {
+      height: 80px;
     }
 
-    /* Section backgrounds */
-    #intro        { background-color: var(--bg-dark); }
-    #qualification{ background-color: #1D2233; }
-    #experience   { background-color: var(--bg-mid); }
-    #skills       { background-color: var(--bg-dark); }
-    #projects     { background-color: #1D2233; }
-    #contact      { background-color: var(--bg-mid); }
-
-    @media(max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav a {
-        margin: 10px 0;
-        display: block;
-      }
+    /* Add subtle shine effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+      animation: shine 15s linear infinite;
     }
+
+    @keyframes shine {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
   </style>
 </head>
-
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div><strong>My Portfolio</strong></div>
-    <div>
+  <header>
+    <h1>Parth Shah</h1>
+    <nav>
       <a href="#intro">Intro</a>
       <a href="#qualification">Qualification</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- INTRO -->
-  <section id="intro" class="fade-section">
-    <div class="card">
-      <img src="your-photo.jpg" class="profile-pic" alt="Your Photo">
-      <h1 class="section-title">Hello, I'm [Your Name]</h1>
-      <p>A passionate construction manager aiming to lead high-impact PMC projects and build a firm of 200+ employees. Here's a glimpse into my journey.</p>
+  <div class="spacer"></div>
+
+  <section id="intro">
+    <div class="container">
+      <h2>Intro</h2>
+      <p>Hello! I am Parth Shah, a passionate Construction Management student with a vision to build a leading PMC firm. I aim to lead projects that redefine skylines and grow into a CEO role by 35. Welcome to my portfolio!</p>
     </div>
   </section>
 
-  <!-- QUALIFICATION -->
-  <section id="qualification" class="fade-section">
-    <div class="card">
-      <h2 class="section-title">1. Qualifications</h2>
-      <ul class="list-numbered">
-        <li>Master’s in Construction Engineering and Management</li>
-        <li>Bachelor’s in Civil Engineering</li>
+  <section id="qualification">
+    <div class="container">
+      <h2>Qualification</h2>
+      <ul>
+        <li><span class="section-number">1.</span> Master’s in Construction Engineering and Management – [Your University]</li>
+        <li><span class="section-number">2.</span> Bachelor's in Civil Engineering – [Your College]</li>
+        <li><span class="section-number">3.</span> Certifications in MS Project, Primavera, AutoCAD, and more</li>
       </ul>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="fade-section">
-    <div class="card">
-      <h2 class="section-title">2. Work Experience</h2>
-      <ul class="list-numbered">
-        <li>Site Engineer – XYZ PMC</li>
-        <li>Intern – ABC Constructions</li>
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <ul>
+        <li><span class="section-number">1.</span> Internship at [PMC Company Name] – Managed 3 sites alongside site engineers</li>
+        <li><span class="section-number">2.</span> Assisted in pour planning, material inventory management, and earned value analysis</li>
+        <li><span class="section-number">3.</span> Participated in safety analysis and risk identification exercises</li>
       </ul>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="fade-section">
-    <div class="card">
-      <h2 class="section-title">3. Skills</h2>
-      <ul class="list-numbered">
-        <li>AutoCAD <img src="autocad-logo.png" alt="AutoCAD Logo"></li>
-        <li>Revit <img src="revit-logo.png" alt="Revit Logo"></li>
-        <li>Primavera / MS Project</li>
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul>
+        <li><span class="section-number">1.</span> Project Planning & Scheduling</li>
+        <li><span class="section-number">2.</span> Quantity Surveying</li>
+        <li><span class="section-number">3.</span> Risk Identification & Safety Management</li>
+        <li><span class="section-number">4.</span> Inventory & Material Management</li>
+        <li><span class="section-number">5.</span> Earned Value Analysis</li>
       </ul>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="fade-section">
-    <div class="card">
-      <h2 class="section-title">4. College Projects</h2>
-      <ul class="list-numbered">
-        <li>Pour Planning for a G+11 Residential Tower</li>
-        <li>Material Management & Inventory System Study</li>
-        <li>Earned Value Analysis on Live Project</li>
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <ul>
+        <li><span class="section-number">1.</span> Studio 2 Portfolio – Pour planning and risk management simulation</li>
+        <li><span class="section-number">2.</span> Blog: “What does a Site Engineer actually do?”</li>
+        <li><span class="section-number">3.</span> Cost comparison study – AAC Blocks vs Red Bricks</li>
       </ul>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="fade-section">
-    <div class="card">
-      <h2 class="section-title">5. Contact</h2>
-      <p>Let's connect:</p>
-      <div class="contact-icons">
-        <a href="tel:+91XXXXXXXXXX"><i class="fas fa-phone"></i></a>
-        <a href="mailto:you@example.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="cv.pdf" download><i class="fas fa-file-download"></i></a>
-      </div>
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: yourname@example.com</p>
+      <p>Phone: +91 XXXXX XXXXX</p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">yourprofile</a></p>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Your Name. All rights reserved.</p>
-  </footer>
-
-  <!-- SCROLL TRIGGER ANIMATION -->
-  <script>
-    const fadeSections = document.querySelectorAll('.fade-section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {threshold: 0.1});
-
-    fadeSections.forEach(section => observer.observe(section));
-  </script>
 
 </body>
 </html>
