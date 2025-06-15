@@ -1,174 +1,230 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
-      --dark1: #131313;
-      --dark2: #292929;
-      --dark3: #424242;
-      --gray: #686868;
-      --light: #FAFAFA;
+      --bg: #E1DFE4;
+      --primary: #DF788D;
+      --accent: #CD0D32;
+      --text: #727272;
+      --white: #FFFFFF;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
+
     body {
-      background-color: var(--dark1);
-      color: var(--light);
+      background-color: var(--bg);
       font-family: 'Open Sans', sans-serif;
+      color: var(--text);
     }
+
     h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Outfit', sans-serif;
+      color: var(--accent);
     }
-    header {
-      background-color: var(--dark3);
-      padding: 20px;
-      text-align: center;
-      position: sticky;
+
+    nav {
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px 10%;
+      display: flex;
+      justify-content: space-between;
       z-index: 1000;
     }
+
     nav a {
-      color: var(--light);
+      margin-left: 20px;
+      color: var(--accent);
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
+      font-family: 'Outfit', sans-serif;
     }
+
     section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
+      padding: 100px 10% 60px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
     }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .intro img {
-      width: 150px;
       border-radius: 50%;
+      width: 140px;
       margin-bottom: 20px;
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
-    ul li {
-      margin: 10px 0;
-      font-size: 1.1rem;
-    }
-    ul li::before {
-      content: counter(item) ". ";
-      counter-increment: item;
+
+    .list-numbered {
+      list-style-type: decimal;
+      padding-left: 1.2em;
       font-weight: bold;
-      font-family: 'Montserrat', sans-serif;
-      color: var(--gray);
+      font-family: 'Open Sans', sans-serif;
     }
-    ul.numbered {
-      counter-reset: item;
-    }
+
     .skills img {
       height: 40px;
-      margin-right: 10px;
-      vertical-align: middle;
+      margin: 10px 15px;
     }
-    .contact a {
-      color: var(--light);
-      margin: 0 10px;
-      font-size: 1.5rem;
+
+    .contact-icons a {
+      color: var(--accent);
+      margin: 0 12px;
+      font-size: 24px;
     }
-    .download-cv {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: var(--dark2);
-      border-radius: 5px;
-      color: var(--light);
-      text-decoration: none;
-      transition: background 0.3s ease;
+
+    footer {
+      background: var(--white);
+      text-align: center;
+      padding: 40px 10%;
+      color: var(--text);
+      font-size: 14px;
     }
-    .download-cv:hover {
-      background: var(--gray);
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin: 10px 0;
+        display: block;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
+  <!-- Navigation -->
   <nav>
-    <a href="#intro">Home</a>
-    <a href="#qualifications">Qualifications</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <div><strong>My Portfolio</strong></div>
+    <div>
+      <a href="#intro">Intro</a>
+      <a href="#qualification">Qualification</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#organizations">Organizations</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
-</header>
 
-<section id="intro" class="intro" data-aos="fade-up">
-  <img src="your-image.jpg" alt="Profile Picture" />
-  <h1>Your Name</h1>
-  <p>Write a short introduction about yourself here. Who you are, what you do, and your aspirations.</p>
-</section>
+  <!-- Sections -->
+  <section id="intro" class="fade-scroll">
+    <img src="your-photo.jpg" alt="Your Photo">
+    <h1 class="section-title">About Me</h1>
+    <p>Hello! I’m [Your Name], a construction management professional with a vision to lead large-scale PMC projects. This portfolio showcases my journey and skills.</p>
+  </section>
 
-<section id="qualifications" data-aos="fade-up">
-  <h2>Qualifications</h2>
-  <ul class="numbered">
-    <li>Master’s in Construction Engineering and Management – XYZ University</li>
-    <li>Bachelor’s in Civil Engineering – ABC College</li>
-  </ul>
-</section>
+  <section id="qualification" class="fade-scroll">
+    <h2 class="section-title">Qualifications</h2>
+    <ul class="list-numbered">
+      <li>Master’s in Construction Management</li>
+      <li>Bachelor’s in Civil Engineering</li>
+    </ul>
+  </section>
 
-<section id="experience" data-aos="fade-up">
-  <h2>Companies Worked In</h2>
-  <ul class="numbered">
-    <li>Intern – L&T Construction</li>
-    <li>Junior Engineer – XYZ Pvt Ltd</li>
-  </ul>
-</section>
+  <section id="experience" class="fade-scroll">
+    <h2 class="section-title">Companies I've Worked In</h2>
+    <ul class="list-numbered">
+      <li>XYZ PMC Solutions</li>
+      <li>ABC Constructions</li>
+    </ul>
+  </section>
 
-<section id="skills" class="skills" data-aos="fade-up">
-  <h2>Skills</h2>
-  <ul class="numbered">
-    <li><img src="autocad-logo.png" alt="AutoCAD" /> AutoCAD</li>
-    <li><img src="revit-logo.png" alt="Revit" /> Revit</li>
-    <li><img src="msproject-logo.png" alt="MS Project" /> MS Project</li>
-    <li><img src="primavera-logo.png" alt="Primavera" /> Primavera</li>
-  </ul>
-</section>
+  <section id="skills" class="fade-scroll skills">
+    <h2 class="section-title">Skills</h2>
+    <ul class="list-numbered">
+      <li>AutoCAD <img src="autocad-logo.png" alt="AutoCAD"></li>
+      <li>Revit <img src="revit-logo.png" alt="Revit"></li>
+      <li>MS Project, Primavera</li>
+    </ul>
+  </section>
 
-<section id="projects" data-aos="fade-up">
-  <h2>College Projects</h2>
-  <ul class="numbered">
-    <li>Pour Planning and Scheduling of G+10 Building</li>
-    <li>Earned Value Management Analysis</li>
-    <li>Material and Inventory Management Strategy</li>
-  </ul>
-</section>
+  <section id="achievements" class="fade-scroll">
+    <h2 class="section-title">Academic Achievements</h2>
+    <ul class="list-numbered">
+      <li>Topper in Construction Project Planning</li>
+      <li>First Prize in Case Study Competition</li>
+    </ul>
+  </section>
 
-<section id="contact" class="contact" data-aos="fade-up">
-  <h2>Contact Me</h2>
-  <div>
-    <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="tel:+911234567890"><i class="fas fa-phone"></i></a>
-  </div>
-  <a class="download-cv" href="your-cv.pdf" download>Download CV</a>
-</section>
+  <section id="organizations" class="fade-scroll">
+    <h2 class="section-title">Organizations</h2>
+    <ul class="list-numbered">
+      <li>Indian Green Building Council – Student Chapter</li>
+      <li>ACCE(I) – Young Professionals Wing</li>
+    </ul>
+  </section>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    once: false, // Ensures animations trigger every time you scroll
-    duration: 1000,
-    offset: 120
-  });
-</script>
+  <section id="projects" class="fade-scroll">
+    <h2 class="section-title">College Projects</h2>
+    <ul class="list-numbered">
+      <li>Pour Planning for G+11 Residential Tower</li>
+      <li>Material Management and Inventory Control Study</li>
+      <li>Earned Value Analysis Report – High-Rise Project</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="fade-scroll">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-icons">
+      <a href="tel:+91XXXXXXXXXX"><i class="fas fa-phone"></i></a>
+      <a href="mailto:yourmail@example.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://instagram.com/yourhandle" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="cv.pdf" download><i class="fas fa-file-download"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Your Name. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll-triggered animation -->
+  <script>
+    const fadeSections = document.querySelectorAll('.fade-scroll');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeSections.forEach(section => observer.observe(section));
+  </script>
 
 </body>
 </html>
+
 
