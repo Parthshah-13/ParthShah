@@ -1,25 +1,29 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Name | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1e293b;
-      --bg: #f8fafc;
-      --accent: #4f46e5;
-      --text: #1f2937;
+      --primary: #7dd3fc;
+      --accent: #60a5fa;
+      --text: #f1f5f9;
+      --bg: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.05);
     }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: var(--bg);
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: var(--text);
       scroll-behavior: smooth;
     }
+
     nav {
-      background: var(--primary);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
       padding: 15px 30px;
       position: sticky;
       top: 0;
@@ -28,82 +32,115 @@
       justify-content: space-between;
       align-items: center;
     }
+
     nav a {
-      color: white;
+      color: var(--text);
       margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
     }
+
     nav a:hover {
       color: var(--accent);
     }
+
     header {
       text-align: center;
-      padding: 60px 20px;
-      background: white;
+      padding: 60px 20px 20px;
       animation: fadeInDown 1s ease-out;
     }
+
     header img {
       border-radius: 50%;
       width: 150px;
       height: 150px;
       object-fit: cover;
       margin-bottom: 20px;
+      border: 3px solid var(--primary);
     }
+
     header h1 {
-      font-size: 2.5em;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
       margin: 10px 0;
+      color: var(--primary);
     }
+
     header p {
       font-size: 1.2em;
-      color: #555;
+      color: #cbd5e1;
     }
+
+    .intro-text {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #d1d5db;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     section {
       max-width: 900px;
       margin: 60px auto;
-      background: white;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
       padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease-out;
     }
+
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     h2 {
       color: var(--primary);
       margin-top: 0;
+      font-family: 'Orbitron', sans-serif;
     }
+
     ul {
       list-style: none;
       padding: 0;
     }
+
     li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      line-height: 1.6;
     }
+
     .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
+
     .skill-box {
       width: 120px;
       height: 140px;
       text-align: center;
+      color: white;
     }
+
     .skill-box img {
       width: 48px;
       height: 48px;
       filter: grayscale(100%);
-      transition: filter 0.3s;
+      transition: filter 0.3s, transform 0.3s;
     }
+
     .skill-box:hover img {
       filter: grayscale(0%);
+      transform: scale(1.1);
     }
+
     .cv-button {
       display: inline-block;
       padding: 10px 20px;
@@ -112,30 +149,37 @@
       color: white;
       text-decoration: none;
       border-radius: 8px;
+      font-weight: bold;
     }
+
     .cv-button:hover {
-      background: #4338ca;
+      background: #3b82f6;
     }
+
     .socials {
       display: flex;
       justify-content: center;
       gap: 30px;
       margin-top: 30px;
     }
+
     .socials a img {
       width: 32px;
       height: 32px;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
+
     .socials a:hover img {
       transform: scale(1.2);
     }
+
     footer {
       text-align: center;
       padding: 30px;
       font-size: 0.9em;
-      color: #888;
+      color: #94a3b8;
     }
+
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
@@ -161,6 +205,9 @@
   <img src="your-photo.jpg" alt="Your Photo">
   <h1>Your Name</h1>
   <p>Construction Management Professional | Aspiring CEO</p>
+  <div class="intro-text">
+    I’m a passionate construction management professional who believes in building smarter, faster, and safer. I strive to bring innovation and clarity to every project I take on, from Gantt charts to pouring plans.
+  </div>
   <a class="cv-button" href="cv.pdf" download>📄 Download CV</a>
 </header>
 
@@ -236,11 +283,10 @@
 </section>
 
 <footer>
-  © 2025 Your Name — Built with ❤️ using GitHub Pages
+  © 2025 Your Name — Built with 💙 using GitHub Pages
 </footer>
 
 <script>
-  // Scroll-trigger animation
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -255,3 +301,4 @@
 
 </body>
 </html>
+
