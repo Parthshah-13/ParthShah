@@ -1,203 +1,173 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    /* Reset and base styles */
+    :root {
+      --dark1: #131313;
+      --dark2: #292929;
+      --dark3: #424242;
+      --gray: #686868;
+      --light: #FAFAFA;
+    }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(145deg, #0A0F22, #1D2233);
-      color: #F0F4F8;
-      line-height: 1.6;
+      background-color: var(--dark1);
+      color: var(--light);
+      font-family: 'Open Sans', sans-serif;
     }
-
-    a {
-      color: #56B2BB;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
     }
-
-    a:hover {
-      color: #BAC7CC;
-    }
-
-    /* Header */
     header {
-      position: fixed;
+      background-color: var(--dark3);
+      padding: 20px;
+      text-align: center;
+      position: sticky;
       top: 0;
-      width: 100%;
-      background: #0A0F22;
-      padding: 1rem 2rem;
       z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
-
-    header h1 {
-      color: #56B2BB;
-      font-size: 1.8rem;
-    }
-
     nav a {
-      margin-left: 1.5rem;
+      color: var(--light);
+      text-decoration: none;
+      margin: 0 15px;
       font-weight: bold;
-      font-size: 1rem;
     }
-
-    /* Sections */
     section {
-      padding: 100px 10% 60px;
-      transition: all 0.4s ease-in-out;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
     }
-
-    section:nth-child(even) {
-      background-color: #1D2233;
+    .intro img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
     }
-
-    section:nth-child(odd) {
-      background-color: #0A0F22;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #56B2BB;
-      border-bottom: 2px solid #56B2BB;
-      padding-bottom: 0.5rem;
-    }
-
     ul {
-      margin-left: 1.2rem;
+      list-style: none;
+      padding-left: 0;
     }
-
     ul li {
-      margin-bottom: 0.6rem;
+      margin: 10px 0;
       font-size: 1.1rem;
     }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .section-number {
+    ul li::before {
+      content: counter(item) ". ";
+      counter-increment: item;
       font-weight: bold;
-      color: #BAC7CC;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--gray);
+    }
+    ul.numbered {
+      counter-reset: item;
+    }
+    .skills img {
+      height: 40px;
       margin-right: 10px;
+      vertical-align: middle;
     }
-
-    /* Intro spacing below navbar */
-    .spacer {
-      height: 80px;
+    .contact a {
+      color: var(--light);
+      margin: 0 10px;
+      font-size: 1.5rem;
     }
-
-    /* Add subtle shine effect */
-    body::before {
-      content: "";
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
-      z-index: 0;
-      pointer-events: none;
-      animation: shine 15s linear infinite;
+    .download-cv {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: var(--dark2);
+      border-radius: 5px;
+      color: var(--light);
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
-
-    @keyframes shine {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .download-cv:hover {
+      background: var(--gray);
     }
-
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Parth Shah</h1>
-    <nav>
-      <a href="#intro">Intro</a>
-      <a href="#qualification">Qualification</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <a href="#intro">Home</a>
+    <a href="#qualifications">Qualifications</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <div class="spacer"></div>
+<section id="intro" class="intro" data-aos="fade-up">
+  <img src="your-image.jpg" alt="Profile Picture" />
+  <h1>Your Name</h1>
+  <p>Write a short introduction about yourself here. Who you are, what you do, and your aspirations.</p>
+</section>
 
-  <section id="intro">
-    <div class="container">
-      <h2>Intro</h2>
-      <p>Hello! I am Parth Shah, a passionate Construction Management student with a vision to build a leading PMC firm. I aim to lead projects that redefine skylines and grow into a CEO role by 35. Welcome to my portfolio!</p>
-    </div>
-  </section>
+<section id="qualifications" data-aos="fade-up">
+  <h2>Qualifications</h2>
+  <ul class="numbered">
+    <li>Master’s in Construction Engineering and Management – XYZ University</li>
+    <li>Bachelor’s in Civil Engineering – ABC College</li>
+  </ul>
+</section>
 
-  <section id="qualification">
-    <div class="container">
-      <h2>Qualification</h2>
-      <ul>
-        <li><span class="section-number">1.</span> Master’s in Construction Engineering and Management – [Your University]</li>
-        <li><span class="section-number">2.</span> Bachelor's in Civil Engineering – [Your College]</li>
-        <li><span class="section-number">3.</span> Certifications in MS Project, Primavera, AutoCAD, and more</li>
-      </ul>
-    </div>
-  </section>
+<section id="experience" data-aos="fade-up">
+  <h2>Companies Worked In</h2>
+  <ul class="numbered">
+    <li>Intern – L&T Construction</li>
+    <li>Junior Engineer – XYZ Pvt Ltd</li>
+  </ul>
+</section>
 
-  <section id="experience">
-    <div class="container">
-      <h2>Experience</h2>
-      <ul>
-        <li><span class="section-number">1.</span> Internship at [PMC Company Name] – Managed 3 sites alongside site engineers</li>
-        <li><span class="section-number">2.</span> Assisted in pour planning, material inventory management, and earned value analysis</li>
-        <li><span class="section-number">3.</span> Participated in safety analysis and risk identification exercises</li>
-      </ul>
-    </div>
-  </section>
+<section id="skills" class="skills" data-aos="fade-up">
+  <h2>Skills</h2>
+  <ul class="numbered">
+    <li><img src="autocad-logo.png" alt="AutoCAD" /> AutoCAD</li>
+    <li><img src="revit-logo.png" alt="Revit" /> Revit</li>
+    <li><img src="msproject-logo.png" alt="MS Project" /> MS Project</li>
+    <li><img src="primavera-logo.png" alt="Primavera" /> Primavera</li>
+  </ul>
+</section>
 
-  <section id="skills">
-    <div class="container">
-      <h2>Skills</h2>
-      <ul>
-        <li><span class="section-number">1.</span> Project Planning & Scheduling</li>
-        <li><span class="section-number">2.</span> Quantity Surveying</li>
-        <li><span class="section-number">3.</span> Risk Identification & Safety Management</li>
-        <li><span class="section-number">4.</span> Inventory & Material Management</li>
-        <li><span class="section-number">5.</span> Earned Value Analysis</li>
-      </ul>
-    </div>
-  </section>
+<section id="projects" data-aos="fade-up">
+  <h2>College Projects</h2>
+  <ul class="numbered">
+    <li>Pour Planning and Scheduling of G+10 Building</li>
+    <li>Earned Value Management Analysis</li>
+    <li>Material and Inventory Management Strategy</li>
+  </ul>
+</section>
 
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <ul>
-        <li><span class="section-number">1.</span> Studio 2 Portfolio – Pour planning and risk management simulation</li>
-        <li><span class="section-number">2.</span> Blog: “What does a Site Engineer actually do?”</li>
-        <li><span class="section-number">3.</span> Cost comparison study – AAC Blocks vs Red Bricks</li>
-      </ul>
-    </div>
-  </section>
+<section id="contact" class="contact" data-aos="fade-up">
+  <h2>Contact Me</h2>
+  <div>
+    <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="tel:+911234567890"><i class="fas fa-phone"></i></a>
+  </div>
+  <a class="download-cv" href="your-cv.pdf" download>Download CV</a>
+</section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: yourname@example.com</p>
-      <p>Phone: +91 XXXXX XXXXX</p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">yourprofile</a></p>
-    </div>
-  </section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: false, // Ensures animations trigger every time you scroll
+    duration: 1000,
+    offset: 120
+  });
+</script>
 
 </body>
 </html>
