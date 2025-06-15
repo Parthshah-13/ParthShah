@@ -1,21 +1,21 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Portfolio</title>
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root {
-      --bg: #E1DFE4;
-      --primary: #DF788D;
-      --accent: #CD0D32;
-      --text: #727272;
-      --white: #FFFFFF;
+      --bg-dark: #0A0F22;
+      --card-dark: #1D2233cc;
+      --primary: #56B2BB;
+      --light: #F0F4F8;
+      --text: #BAC7CC;
     }
 
     * {
@@ -26,53 +26,63 @@
     }
 
     body {
-      background-color: var(--bg);
       font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #0A0F22, #12172C, #0A0F22);
+      background-size: 400% 400%;
+      animation: shine 15s ease infinite;
       color: var(--text);
     }
 
-    h1, h2, h3 {
+    @keyframes shine {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1, h2 {
       font-family: 'Outfit', sans-serif;
-      color: var(--accent);
+      color: var(--primary);
     }
 
     nav {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
-      background: var(--white);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 15px 10%;
+      width: 100%;
+      background: rgba(13, 18, 36, 0.9);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: space-between;
+      padding: 15px 10%;
       z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
+      color: var(--primary);
       margin-left: 20px;
-      color: var(--accent);
       text-decoration: none;
       font-weight: bold;
-      font-family: 'Outfit', sans-serif;
     }
 
     section {
-      padding: 100px 10% 60px;
+      padding: 120px 10% 60px;
+      transition: all 1s ease;
+    }
+
+    .card {
+      background: var(--card-dark);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      margin-bottom: 60px;
       opacity: 0;
       transform: translateY(40px);
-      transition: all 0.8s ease;
+      transition: all 1s ease;
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .intro img {
-      border-radius: 50%;
-      width: 140px;
-      margin-bottom: 20px;
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     .section-title {
@@ -81,32 +91,40 @@
     }
 
     .list-numbered {
-      list-style-type: decimal;
-      padding-left: 1.2em;
-      font-weight: bold;
+      list-style: decimal;
+      padding-left: 1.5rem;
+      font-weight: 500;
+      color: var(--light);
       font-family: 'Open Sans', sans-serif;
     }
 
     .skills img {
       height: 40px;
-      margin: 10px 15px;
+      margin: 8px 15px;
     }
 
     .contact-icons a {
-      color: var(--accent);
-      margin: 0 12px;
+      color: var(--primary);
+      margin: 0 15px;
       font-size: 24px;
     }
 
     footer {
-      background: var(--white);
       text-align: center;
       padding: 40px 10%;
-      color: var(--text);
       font-size: 14px;
+      color: var(--text);
+      border-top: 1px solid #2d3145;
     }
 
-    @media (max-width: 768px) {
+    .profile-pic {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 2px solid var(--primary);
+    }
+
+    @media(max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
@@ -121,7 +139,7 @@
 
 <body>
 
-  <!-- Navigation -->
+  <!-- NAVIGATION -->
   <nav>
     <div><strong>My Portfolio</strong></div>
     <div>
@@ -129,102 +147,98 @@
       <a href="#qualification">Qualification</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#organizations">Organizations</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- Sections -->
-  <section id="intro" class="fade-scroll">
-    <img src="your-photo.jpg" alt="Your Photo">
-    <h1 class="section-title">About Me</h1>
-    <p>Hello! I’m [Your Name], a construction management professional with a vision to lead large-scale PMC projects. This portfolio showcases my journey and skills.</p>
-  </section>
-
-  <section id="qualification" class="fade-scroll">
-    <h2 class="section-title">Qualifications</h2>
-    <ul class="list-numbered">
-      <li>Master’s in Construction Management</li>
-      <li>Bachelor’s in Civil Engineering</li>
-    </ul>
-  </section>
-
-  <section id="experience" class="fade-scroll">
-    <h2 class="section-title">Companies I've Worked In</h2>
-    <ul class="list-numbered">
-      <li>XYZ PMC Solutions</li>
-      <li>ABC Constructions</li>
-    </ul>
-  </section>
-
-  <section id="skills" class="fade-scroll skills">
-    <h2 class="section-title">Skills</h2>
-    <ul class="list-numbered">
-      <li>AutoCAD <img src="autocad-logo.png" alt="AutoCAD"></li>
-      <li>Revit <img src="revit-logo.png" alt="Revit"></li>
-      <li>MS Project, Primavera</li>
-    </ul>
-  </section>
-
-  <section id="achievements" class="fade-scroll">
-    <h2 class="section-title">Academic Achievements</h2>
-    <ul class="list-numbered">
-      <li>Topper in Construction Project Planning</li>
-      <li>First Prize in Case Study Competition</li>
-    </ul>
-  </section>
-
-  <section id="organizations" class="fade-scroll">
-    <h2 class="section-title">Organizations</h2>
-    <ul class="list-numbered">
-      <li>Indian Green Building Council – Student Chapter</li>
-      <li>ACCE(I) – Young Professionals Wing</li>
-    </ul>
-  </section>
-
-  <section id="projects" class="fade-scroll">
-    <h2 class="section-title">College Projects</h2>
-    <ul class="list-numbered">
-      <li>Pour Planning for G+11 Residential Tower</li>
-      <li>Material Management and Inventory Control Study</li>
-      <li>Earned Value Analysis Report – High-Rise Project</li>
-    </ul>
-  </section>
-
-  <section id="contact" class="fade-scroll">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-icons">
-      <a href="tel:+91XXXXXXXXXX"><i class="fas fa-phone"></i></a>
-      <a href="mailto:yourmail@example.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://instagram.com/yourhandle" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="cv.pdf" download><i class="fas fa-file-download"></i></a>
+  <!-- INTRO -->
+  <section id="intro" class="fade-section">
+    <div class="card">
+      <img src="your-photo.jpg" class="profile-pic" alt="Your Photo">
+      <h1 class="section-title">Hello, I'm [Your Name]</h1>
+      <p>A passionate construction manager aiming to lead high-impact PMC projects and build a firm of 200+ employees. Here's a glimpse into my journey.</p>
     </div>
   </section>
 
+  <!-- QUALIFICATION -->
+  <section id="qualification" class="fade-section">
+    <div class="card">
+      <h2 class="section-title">1. Qualifications</h2>
+      <ul class="list-numbered">
+        <li>Master’s in Construction Engineering and Management</li>
+        <li>Bachelor’s in Civil Engineering</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="fade-section">
+    <div class="card">
+      <h2 class="section-title">2. Work Experience</h2>
+      <ul class="list-numbered">
+        <li>Site Engineer – XYZ PMC</li>
+        <li>Intern – ABC Constructions</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="fade-section">
+    <div class="card">
+      <h2 class="section-title">3. Skills</h2>
+      <ul class="list-numbered">
+        <li>AutoCAD <img src="autocad-logo.png" alt="AutoCAD Logo"></li>
+        <li>Revit <img src="revit-logo.png" alt="Revit Logo"></li>
+        <li>Primavera / MS Project</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-section">
+    <div class="card">
+      <h2 class="section-title">4. College Projects</h2>
+      <ul class="list-numbered">
+        <li>Pour Planning for a G+11 Residential Tower</li>
+        <li>Material Management & Inventory System Study</li>
+        <li>Earned Value Analysis on Live Project</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-section">
+    <div class="card">
+      <h2 class="section-title">5. Contact</h2>
+      <p>Let's connect:</p>
+      <div class="contact-icons">
+        <a href="tel:+91XXXXXXXXXX"><i class="fas fa-phone"></i></a>
+        <a href="mailto:you@example.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="cv.pdf" download><i class="fas fa-file-download"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Your Name. All rights reserved.</p>
   </footer>
 
-  <!-- Scroll-triggered animation -->
+  <!-- SCROLL TRIGGER ANIMATION -->
   <script>
-    const fadeSections = document.querySelectorAll('.fade-scroll');
+    const fadeSections = document.querySelectorAll('.fade-section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting){
           entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, {threshold: 0.1});
 
     fadeSections.forEach(section => observer.observe(section));
   </script>
 
 </body>
 </html>
-
-
