@@ -1,211 +1,174 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Name | Portfolio</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
-      --cream: #E8DFE0;
-      --sage: #8D9B6A;
-      --blue-grey: #8A9EA7;
-      --peach: #DAB692;
-      --brown: #8F5B34;
-      --text-dark: #2b2b2b;
-      --white: #ffffff;
+      --dark1: #131313;
+      --dark2: #292929;
+      --dark3: #424242;
+      --gray: #686868;
+      --light: #FAFAFA;
     }
-
     * {
-      box-sizing: border-box;
-    }
-
-    body {
       margin: 0;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
+      padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
-
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      color: var(--brown);
+    body {
+      background-color: var(--dark1);
+      color: var(--light);
+      font-family: 'Open Sans', sans-serif;
     }
-
-    nav {
-      background: rgba(250, 248, 247, 0.8);
-      backdrop-filter: blur(8px);
-      padding: 15px 30px;
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    header {
+      background-color: var(--dark3);
+      padding: 20px;
+      text-align: center;
       position: sticky;
       top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      z-index: 1000;
     }
-
     nav a {
-      color: var(--text-dark);
-      font-weight: 500;
+      color: var(--light);
       text-decoration: none;
       margin: 0 15px;
-    }
-
-    nav a:hover {
-      color: var(--blue-grey);
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px 20px;
-    }
-
-    header img {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid var(--brown);
-    }
-
-    section {
-      max-width: 900px;
-      margin: 60px auto;
-      background: var(--white);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .cv-button {
-      background-color: var(--blue-grey);
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 8px;
       font-weight: bold;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .intro img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+    ul li::before {
+      content: counter(item) ". ";
+      counter-increment: item;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--gray);
+    }
+    ul.numbered {
+      counter-reset: item;
+    }
+    .skills img {
+      height: 40px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .contact a {
+      color: var(--light);
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
+    .download-cv {
       display: inline-block;
       margin-top: 20px;
+      padding: 10px 20px;
+      background: var(--dark2);
+      border-radius: 5px;
+      color: var(--light);
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
-
-    .cv-button:hover {
-      background-color: var(--sage);
-    }
-
-    .skill-box img {
-      filter: grayscale(100%);
-      transition: filter 0.3s, transform 0.3s;
-      margin: 10px;
-    }
-
-    .skill-box:hover img {
-      filter: grayscale(0%);
-      transform: scale(1.1);
-    }
-
-    .socials a img {
-      margin: 0 10px;
-      transition: transform 0.3s, filter 0.3s;
-    }
-
-    .socials a:hover img {
-      transform: scale(1.2);
-      filter: brightness(1.2);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9em;
-      color: var(--blue-grey);
+    .download-cv:hover {
+      background: var(--gray);
     }
   </style>
 </head>
-
 <body>
+
+<header>
   <nav>
-    <div><strong>My Portfolio</strong></div>
-    <div>
-      <a href="#intro">Intro</a>
-      <a href="#qualifications">Qualifications</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <a href="#intro">Home</a>
+    <a href="#qualifications">Qualifications</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
+</header>
 
-  <header id="intro">
-    <img src="your-photo.jpg" alt="Your Photo"/>
-    <h1>Hello, I'm Your Name</h1>
-    <p>I'm a passionate Construction Manager with a vision to transform the industry through smart project execution and leadership.</p>
-  </header>
+<section id="intro" class="intro" data-aos="fade-up">
+  <img src="your-image.jpg" alt="Profile Picture" />
+  <h1>Your Name</h1>
+  <p>Write a short introduction about yourself here. Who you are, what you do, and your aspirations.</p>
+</section>
 
-  <section id="qualifications">
-    <h2>Qualifications</h2>
-    <p>M.Tech in Construction Engineering and Management</p>
-    <p>B.E. in Civil Engineering</p>
-  </section>
+<section id="qualifications" data-aos="fade-up">
+  <h2>Qualifications</h2>
+  <ul class="numbered">
+    <li>Master’s in Construction Engineering and Management – XYZ University</li>
+    <li>Bachelor’s in Civil Engineering – ABC College</li>
+  </ul>
+</section>
 
-  <section id="experience">
-    <h2>Companies & Organizations</h2>
-    <p>Worked at XYZ Pvt Ltd as Site Engineer</p>
-    <p>Interned at ABC Infrastructure</p>
-  </section>
+<section id="experience" data-aos="fade-up">
+  <h2>Companies Worked In</h2>
+  <ul class="numbered">
+    <li>Intern – L&T Construction</li>
+    <li>Junior Engineer – XYZ Pvt Ltd</li>
+  </ul>
+</section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skill-box">
-      <img src="autocad-logo.png" alt="AutoCAD" width="50"/>
-      <img src="revit-logo.png" alt="Revit" width="50"/>
-      <img src="msproject-logo.png" alt="MS Project" width="50"/>
-    </div>
-  </section>
+<section id="skills" class="skills" data-aos="fade-up">
+  <h2>Skills</h2>
+  <ul class="numbered">
+    <li><img src="autocad-logo.png" alt="AutoCAD" /> AutoCAD</li>
+    <li><img src="revit-logo.png" alt="Revit" /> Revit</li>
+    <li><img src="msproject-logo.png" alt="MS Project" /> MS Project</li>
+    <li><img src="primavera-logo.png" alt="Primavera" /> Primavera</li>
+  </ul>
+</section>
 
-  <section id="projects">
-    <h2>College Projects</h2>
-    <p>Pour Planning and Management of G+11 Structure</p>
-    <p>Inventory Control and Cost Analysis for RCC Buildings</p>
-    <p>Use of Drones in Construction Monitoring</p>
-  </section>
+<section id="projects" data-aos="fade-up">
+  <h2>College Projects</h2>
+  <ul class="numbered">
+    <li>Pour Planning and Scheduling of G+10 Building</li>
+    <li>Earned Value Management Analysis</li>
+    <li>Material and Inventory Management Strategy</li>
+  </ul>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="socials">
-      <a href="https://linkedin.com/in/yourprofile" target="_blank"><img src="linkedin.png" width="30" alt="LinkedIn"/></a>
-      <a href="mailto:youremail@example.com"><img src="email.png" width="30" alt="Email"/></a>
-      <a href="https://instagram.com/yourprofile" target="_blank"><img src="instagram.png" width="30" alt="Instagram"/></a>
-      <a href="tel:+919999999999"><img src="phone.png" width="30" alt="Phone"/></a>
-    </div>
-    <a class="cv-button" href="YourCV.pdf" target="_blank">Download CV</a>
-  </section>
+<section id="contact" class="contact" data-aos="fade-up">
+  <h2>Contact Me</h2>
+  <div>
+    <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="tel:+911234567890"><i class="fas fa-phone"></i></a>
+  </div>
+  <a class="download-cv" href="your-cv.pdf" download>Download CV</a>
+</section>
 
-  <footer>© 2025 Your Name. All rights reserved.</footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: false, // Ensures animations trigger every time you scroll
+    duration: 1000,
+    offset: 120
+  });
+</script>
 
-  <script>
-    // Reveal sections on scroll
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => observer.observe(section));
-  </script>
 </body>
 </html>
+
