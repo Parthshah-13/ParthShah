@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,6 +12,7 @@
   <style>
     :root {
       --bg-dark: #0A0F22;
+      --bg-mid: #12172C;
       --card-dark: #1D2233cc;
       --primary: #56B2BB;
       --light: #F0F4F8;
@@ -122,6 +124,14 @@
       margin-bottom: 20px;
       border: 2px solid var(--primary);
     }
+
+    /* Section backgrounds */
+    #intro        { background-color: var(--bg-dark); }
+    #qualification{ background-color: #1D2233; }
+    #experience   { background-color: var(--bg-mid); }
+    #skills       { background-color: var(--bg-dark); }
+    #projects     { background-color: #1D2233; }
+    #contact      { background-color: var(--bg-mid); }
 
     @media(max-width: 768px) {
       nav {
